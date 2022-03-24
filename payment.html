@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./home1.css" />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .main-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: 3%;
+    }
+    .input-section {
+      display: flex;
+      flex-direction: column;
+    }
+    input {
+      width: 400px;
+      height: 25px;
+      margin-top: 10px;
+    }
+    .payment {
+      width: 400px;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 20px;
+      background-color: #ff0000;
+      color: white;
+      border: none;
+    }
+    .message {
+      background-color: #ff0000;
+      color: white;
+      width: fit-content;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 15px;
+    }
+  </style>
+  <body>
+    <div class="nav-header"></div>
+    <div class="main-section">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Boat-Logo_2.png?89740"
+        alt=""
+        width="100px"
+        height="50px"
+      />
+      <div class="message">
+        Note: Due to covid,expect a delay in your Delivery
+      </div>
+      <div class="input-section">
+        <input type="email" placeholder="Email" id="email" />
+        <input type="text" placeholder="Country/region" id="cont" />
+        <input type="text" placeholder="Name" id="name" />
+
+        <input type="text" placeholder="Address" id="add" />
+        <input type="text" placeholder="city name" id="city" />
+        <input type="text" placeholder="State" id="state" />
+        <input type="text" placeholder="pin code" id="pincode" />
+        <input type="tel" placeholder="phone" id="phone" />
+        <input type="number" placeholder="Card-number" id="cn" />
+        <button type="button" class="payment" id="pay">confirm payment</button>
+      </div>
+    </div>
+    <script type="module">
+      import navbar from "./navbar.js";
+      let nav = document.querySelector(".nav-header");
+      nav.innerHTML = navbar();
+
+      let paybtn = document.querySelector(".payment");
+      paybtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        // window.location.href = "thankyou.html";
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let cont = document.getElementById("cont").value;
+        let add = document.getElementById("add").value;
+        let city = document.getElementById("city").value;
+        let state = document.getElementById("state").value;
+        let pincode = document.getElementById("pincode").value;
+        let phone = document.getElementById("phone").value;
+        let cn = document.getElementById("cn").value;
+        if (
+          name.length !== 0 &&
+          email.length !== 0 &&
+          cont.length !== 0 &&
+          add.length !== 0 &&
+          city.length !== 0 &&
+          state.length !== 0 &&
+          pincode.length !== 0 &&
+          phone.length !== 0 &&
+          cn.length !== 0
+        ) {
+          window.location.href = "thankyou.html";
+        } else {
+          alert("please fill the details properly");
+        }
+      });
+      function displaycarditems(data) {
+        let spancart = document.querySelector(".cart-item");
+        spancart.textContent = data.length;
+      }
+      let cartitems = JSON.parse(localStorage.getItem("cartitems"));
+      displaycarditems(cartitems);
+    </script>
+  </body>
+</html>

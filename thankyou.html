@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THANK YOU PAGE</title>
+    <link rel="stylesheet" href="home1.css" />
+  </head>
+  <style>
+    .thankx {
+      color: rgb(255, 0, 0);
+    }
+    .text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15%;
+    }
+    .right-icon {
+      height: 30px;
+      width: 30px;
+      margin-left: 1%;
+    }
+  </style>
+  <body>
+    <div class="nav-header"></div>
+    <div class="text">
+      <h1 class="thankx">THANK YOU FOR SHOPPING</h1>
+      <img
+        src="https://img.icons8.com/ios/50/000000/checkmark--v2.png"
+        class="right-icon"
+      />
+    </div>
+    <script type="module">
+      import navbar from "./navbar.js";
+      let nav = document.querySelector(".nav-header");
+      nav.innerHTML = navbar();
+      function displaycarditems(data) {
+        let spancart = document.querySelector(".cart-item");
+        spancart.textContent = data.length;
+      }
+      let cartitems = JSON.parse(localStorage.getItem("cartitems"));
+      displaycarditems(cartitems);
+    </script>
+  </body>
+</html>

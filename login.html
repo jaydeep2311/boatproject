@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="./home1.css" />
+    <style>
+      #shop_container > h1 {
+        padding-top: 150px;
+        margin-left: 630px;
+      }
+      #box {
+        width: 500px;
+        margin-top: 40px;
+        margin-left: 500px;
+      }
+
+      #box > div {
+        padding-top: 20px;
+      }
+
+      #email {
+        padding-right: 272px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        outline: none;
+        border: 1px solid black;
+      }
+
+      #password {
+        border: none;
+        outline: none;
+      }
+
+      #box > div:nth-child(4) {
+        width: 450px;
+        border: 1px solid black;
+        margin-top: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      #box > div > a {
+        margin-left: 280px;
+        text-decoration: none;
+        color: black;
+      }
+
+      #box > div:nth-child(5) {
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        margin-top: 20px;
+        width: 455px;
+        border-radius: 10px;
+        text-align: center;
+        padding-bottom: 12px;
+        padding-top: 12px;
+      }
+
+      #box > div:nth-child(6) > a:nth-child(2) {
+        color: red;
+        font-size: 20px;
+        font-weight: bold;
+        padding-left: 50px;
+      }
+      #box > div:nth-child(6) > a:nth-child(1) {
+        color: blue;
+        margin-left: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="shop_container"></div>
+  </body>
+</html>
+<script type="module">
+  let header = document.getElementById("header");
+  let shop_container = document.getElementById("shop_container");
+
+  import navbar from "./navbar.js";
+  header.innerHTML = navbar();
+
+  import login from "./login.js";
+  shop_container.innerHTML = login();
+
+  let local_arr = JSON.parse(localStorage.getItem("local_arr_obj"));
+  if (local_arr == null) {
+    localStorage.setItem("local_arr_obj", JSON.stringify([]));
+  }
+
+  let email = document.getElementById("email");
+  let password = document.getElementById("password");
+
+  let sign_btn = document.getElementById("sign");
+
+  sign_btn.addEventListener("click", sign_in);
+
+  function sign_in() {
+    if (email.value == "") {
+      alert("Email should not be empty !");
+    }
+
+    if (password.value == "") {
+      alert("Password should not be empty !");
+    }
+
+    let local_arr = JSON.parse(localStorage.getItem("local_arr_obj"));
+
+    let f = 0;
+    local_arr.forEach(function (user) {
+      if (user.email == email.value && user.password == password.value) {
+        f = 1;
+      }
+    });
+
+    if (f == 1) {
+      window.location.href = "index.html";
+    } else {
+      alert("wrong email & password !");
+    }
+  }
+  let product = JSON.parse(localStorage.getItem("cartitems"));
+  if (product == null) {
+    localStorage.setItem("cartitems", JSON.stringify([]));
+  }
+  /// count item at navbar
+  displaycarditems(product);
+
+  function displaycarditems(data) {
+    let spancart = document.querySelector(".cart-item");
+
+    spancart.textContent = data.length;
+  }
+
+  //More dropdown js
+  var morelists = [
+    "Gifting",
+    "Offer zone",
+    "Do what FLoats your boAt",
+    "Meet the boAtheads",
+    "Earn rs100",
+  ];
+  let more = document.querySelector(".more");
+  more.addEventListener("mouseenter", function (e) {
+    e.preventDefault();
+    let div = document.createElement("div");
+
+    let ul = document.createElement("ul");
+    ul.style.display = "flex";
+    ul.style.flexDirection = "column";
+    ul.style.justifyContent = "space-between";
+    ul.style.height = "80%";
+    ul.style.paddingTop = "10px";
+    ul.style.paddingBottom = "10px";
+    for (var i = 0; i < morelists.length; i++) {
+      let a = document.createElement("a");
+      a.href = `${morelists[i]}.html`;
+      let li = document.createElement("li");
+      li.setAttribute("class", "morelists");
+      a.style.textDecoration = "none";
+
+      li.textContent = morelists[i];
+      a.append(li);
+      ul.append(a);
+    }
+    div.append(ul);
+
+    div.style.width = "250px";
+    div.style.height = "200px";
+    div.style.backgroundColor = "black";
+    div.style.position = "absolute";
+    div.style.zIndex = "1";
+
+    more.append(div);
+  });
+  more.addEventListener("mouseleave", function (e) {
+    e.preventDefault();
+    more.innerHTML = "";
+    more.textContent = "More";
+  });
+</script>

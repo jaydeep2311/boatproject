@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Page</title>
+    <link rel="stylesheet" href="./home1.css" />
+    <style>
+        #account_box > h1{
+            padding-top: 50px;
+            margin-left : 550px;
+        }
+
+          #box {
+              width : 500px;
+              padding-top : 10px;
+              margin-left : 500px;
+          }
+
+          #box >div {
+              padding-top : 15px;
+              width : 400px;
+          }
+           #box input {
+               border : none;
+               outline : none;
+               width : 390px;
+               height : 32px;
+           }
+
+           #box >div:nth-child(2n){
+               border : 1px solid black;
+               padding-top : 10px;
+               padding-bottom : 10px;
+           }
+
+           #box >div:last-child {
+               border : none;
+           }
+
+           #box >div:nth-child(9){
+               width : 400px;
+               background-color: red;
+               color : white;
+               font-size : 18px;
+               font-weight : bold;
+               text-align : center;
+               margin-top : 20px;
+               padding-bottom : 8px;
+               border-radius : 5px;
+
+       }
+
+    </style>
+</head>
+<body>
+    <div id = "header"></div>
+    <div id = "account_box"></div>
+</body>
+</html>
+<script type = "module">
+   let header = document.getElementById("header");
+   let account_box = document.getElementById("account_box");
+
+   import navbar from "./navbar.js";
+   import account from "./account.js";
+
+   header.innerHTML = navbar();
+
+   account_box.innerHTML = account();
+
+   let first_name = document.getElementById("first_name");
+   let last_name = document.getElementById("last_name");
+   let email = document.getElementById("email");
+   let password = document.getElementById("password");
+
+   let local_arr = JSON.parse(localStorage.getItem("local_arr_obj"));
+   if(local_arr == null){
+       localStorage.setItem("local_arr_obj" , JSON.stringify([]));
+   }
+
+   let create_btn = document.getElementById("create");
+
+   create_btn.addEventListener("click", get_data);
+
+    function get_data(){
+
+        let local_arr = JSON.parse(localStorage.getItem("local_arr_obj"));
+
+        
+        let obj = { first_name : first_name.value,
+                    last_name : last_name.value,
+                    email : email.value,
+                    password : password.value,
+                    id : local_arr.length + 1,
+                 }
+            
+                let count = 0;
+
+                 local_arr.forEach(function(user){
+                    
+                     if( email.value != "" && user.email == email.value){
+                         alert("This email is already exist");
+                            count++;
+                     }  if (email.value == ""||password.value == ""||first_name.value == "" ||last_name.value == ""){ 
+                         count++;
+                     }
+                 });
+
+                    if(email.value == ""){
+                         alert("email should not be empty")
+                     }if(password.value == ""){
+                         alert("password should not be empty")
+                     }if(first_name.value == ""){
+                         alert("First Name should not be empty");
+                     }if(last_name.value == ""){
+                         alert("Last Name should not be empty");
+                     }
+        console.log(count);
+         if(count == 0) {  
+        local_arr.push(obj);
+        localStorage.setItem("local_arr_obj" , JSON.stringify(local_arr)); 
+        if (email.value != ""&&password.value != ""&&first_name.value != "" &&last_name.value != "")  
+        alert("You have succesfully created the account");
+       
+         } else {
+             count = 0;
+         }
+    
+        
+    }
+          
+    let product = JSON.parse(localStorage.getItem("cartitems"));
+        if (product == null) {
+         localStorage.setItem("cartitems", JSON.stringify([]));
+           }
+            /// count item at navbar 
+              displaycarditems(product);
+
+             function displaycarditems(data) {
+               let spancart = document.querySelector(".cart-item");
+                 
+            spancart.textContent = data.length;
+              }
+
+//More dropdown js
+var morelists = [
+  "Gifting",
+  "Offer zone",
+  "Do what FLoats your boAt",
+  "Meet the boAtheads",
+  "Earn rs100",
+];
+let more = document.querySelector(".more");
+more.addEventListener("mouseenter", function (e) {
+  e.preventDefault();
+  let div = document.createElement("div");
+
+  let ul = document.createElement("ul");
+  ul.style.display = "flex";
+  ul.style.flexDirection = "column";
+  ul.style.justifyContent = "space-between";
+  ul.style.height = "80%";
+  ul.style.paddingTop = "10px";
+  ul.style.paddingBottom = "10px";
+  for (var i = 0; i < morelists.length; i++) {
+    let a = document.createElement("a");
+    a.href = `${morelists[i]}.html`;
+    let li = document.createElement("li");
+    li.setAttribute("class", "morelists");
+    a.style.textDecoration = "none";
+
+    li.textContent = morelists[i];
+    a.append(li);
+    ul.append(a);
+  }
+  div.append(ul);
+
+  div.style.width = "250px";
+  div.style.height = "200px";
+  div.style.backgroundColor = "black";
+  div.style.position = "absolute";
+  div.style.zIndex = "1";
+
+  more.append(div);
+});
+more.addEventListener("mouseleave", function (e) {
+  e.preventDefault();
+  more.innerHTML = "";
+  more.textContent = "More";
+});
+    
+
+       
+</script>

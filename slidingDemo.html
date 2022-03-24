@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .slideshow{
+            display: flex;
+            flex-direction: row-reverse;
+            border: 1px solid orange;
+            background-attachment: fixed;
+            background-color: black;
+        }
+    #slideimage{
+        width: 35%;
+        height: 300px;
+        border: 1px solid red;
+
+        
+    }
+    .box{
+        display: inline;
+        width: 80%;
+        border: 1px solid greenyellow;
+        margin: 10px;
+        padding: 15px;
+        position:fixed;
+        content: initial;
+        
+    }
+  .discriptin{
+     margin: 80px;
+     color:red;
+  }
+    .line{
+        width: 20px;
+        height: 10px;
+        color:red
+    }
+
+
+    </style>
+   
+    <title>sliding-home</title>
+</head>
+<body>
+    <div class="box">
+    <div class="slideshow">
+
+        <img src="https://techcrunch.com/wp-content/uploads/2021/01/boat-lifestyle.jpg" alt="Hardik" id="slideimage">
+        <div class="discriptin">
+            <h3>MEET THE boatHEAD</h3>
+            <div class="line"></div>
+            <h4>DARING. DAVEDAVALES. DASHING</h4>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+  var image = ["https://cdn.shopify.com/s/files/1/0057/8938/4802/articles/Blog-Post-Diljit_1_1024x1024.jpg?v=1606208584",
+
+                 "https://i.ytimg.com/vi/iVVaezDLoTY/hqdefault.jpg",
+
+                 "https://cms.qz.com/wp-content/uploads/2021/04/Screenshot-2021-04-22-at-2.00.28-PM-e1619080318526.png?quality=75&strip=all&w=1600&h=900&crop=1"
+                 
+                ];
+
+    var i = 0;
+    function slides(){
+       document.getElementById("slideimage").src = image[i];
+   
+         if(i<image.length-1){
+            i++;
+
+         }else{
+             i=0;
+         }
+    }
+setInterval(slides, 2000);
+
+
+</script>

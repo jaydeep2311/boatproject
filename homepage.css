@@ -1,0 +1,261 @@
+body {
+  background-color: rgb(0, 0, 0);
+}
+
+/* image-cont */
+#image-cont_1 {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid red;
+  background-color: rgba(0, 0, 0, 0.877);
+  margin-top: 5%;
+}
+
+.image {
+  position: relative;
+  width: 50%;
+}
+.image__img2 {
+  display: flex;
+  height: 460px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image__img {
+  display: flex;
+  width: 100%;
+}
+
+.image__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-family: "Quicksand", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.image__overlay--blur {
+  backdrop-filter: blur(5px);
+}
+
+.image__overlay--primary {
+  background: grey;
+}
+
+.image__overlay > * {
+  transform: translateY(20px);
+  transition: transform 0.25s;
+}
+
+.image__overlay:hover {
+  opacity: 1;
+}
+
+.image__overlay:hover > * {
+  transform: translateY(0);
+}
+
+.image__title {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.image__description {
+  font-size: 1.25em;
+  margin-top: 0.25em;
+}
+/* sliding image */
+.slideshow {
+  display: flex;
+  flex-direction: row-reverse;
+  border: 1px solid orange;
+  background-attachment: fixed;
+  background-color: black;
+}
+#slideimage {
+  width: 35%;
+  height: 300px;
+  border: 1px solid red;
+}
+.boltbox {
+  display: inline;
+  width: 80%;
+  /* width: 100px; */
+  /* border: 1px solid greenyellow; */
+  /* margin: 10px; */
+  padding: 15px;
+  color: rgba(0, 0, 0, 0.877);
+}
+.discriptin {
+  margin: 100px;
+  color: red;
+}
+.line {
+  width: 280px;
+  height: 4px;
+  background-color: aliceblue;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* blog */
+a {
+  text-decoration: none;
+  color: white;
+}
+#Blogs-heading {
+  text-align: center;
+  border: 1px solid red;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-color: black;
+}
+body {
+  margin: 0;
+}
+#containers1 {
+  background-color: black;
+  align-items: center;
+  padding-top: 30px;
+  margin: 30px;
+}
+
+#containers1 > img {
+  width: 330px;
+  height: 170px;
+  padding-top: 50px;
+  margin: 30px;
+  border-radius: 9px 9px;
+}
+#container1 > img:nth-child(9) {
+  padding-left: 180px;
+}
+
+/* advertisement */
+.img_container {
+  background-color: black;
+  border: 1px solid red;
+}
+#img_flex {
+  display: flex;
+}
+.magi {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.magi > img {
+  width: 30%;
+}
+
+#first-footer {
+  display: flex;
+  color: white;
+  border: 1px solid black;
+  background-color: black;
+  justify-content: space-between;
+}
+#first-footer div {
+  /* border: 1px solid red; */
+  margin: 10px;
+  text-align: center;
+}
+
+#footer-2 {
+  display: block;
+  border: 1px solid black;
+  background-color: #2c2c2c;
+  padding: 20px 20px;
+}
+#footer-3 {
+  background-color: black;
+  border: 1px solid red;
+}
+#headlines {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ 
+}
+#headlines div {
+  color: white;
+  margin-left: 20px;
+}
+#input-footer {
+  margin-top: 40px;
+}
+#f-cont {
+  /* border: 1px solid orange; */
+  margin-left: 520px;
+}
+table {
+  color: white;
+  font-family: cursive;
+  text-align: center;
+  padding: 10px;
+}
+tr {
+  row-gap: 30%;
+  margin: 10px;
+}
+td {
+  margin: 30px;
+}
+a {
+  text-decoration: none;
+  color: gainsboro;
+}
+#built {
+  display: flex;
+  /* border: 1px solid green; */
+  color: white;
+  margin: 220px;
+  margin-top: 5%;
+  
+}
+#built  div  p img{
+  flex-direction: row;
+  
+
+}
+p {
+  font-weight: 500;
+}
+
+.box2 {
+  width: 100px;
+}
+#size {
+  padding: 10px;
+  border-radius: 10px;
+}
+#size2 {
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+}
+.copyright {
+  text-align: center;
+  font-size: 12px;
+}
+.icons1 {
+  display: flex;
+   border: 1px solid orangered; 
+  margin-top: 10%;
+  /* background-color:white; */
+}
+.icons1 > div {
+  margin: 8px;
+}
+#inbox {
+  flex: 1;
+}
